@@ -1,0 +1,15 @@
+<app-header />
+
+<div class="below-header">
+	<main>
+		<router-outlet />
+	</main>
+	
+	<section class="footer">
+		<nav class="footer__links">
+			<a routerLink="/impressum" i18n="@@footer.impressum">Impressum</a>
+			<a routerLink="/privacy-policy" i18n="@@footer.privacy-policy">Privacy policy</a>
+		</nav>
+		<div class="footer__bg-chain"></div>
+	</section>
+</div>

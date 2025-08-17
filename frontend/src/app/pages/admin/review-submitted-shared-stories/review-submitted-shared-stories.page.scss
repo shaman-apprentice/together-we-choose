@@ -1,0 +1,32 @@
+app-review-submitted-shared-stories {
+	.container {
+		margin: 1.5rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.story-card-selection {
+		display: inline-flex;
+		border: 2px solid transparent;
+		border-radius: 1rem;
+		cursor: pointer;
+		transition: border-color 120ms ease-in-out, background-color 120ms ease-in-out, box-shadow 120ms ease-in-out;
+		padding: 0.5rem;
+
+		&:hover {
+			border-color: var(--mat-sys-outline-variant, rgba(0, 0, 0, 0.12));
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--mat-sys-primary);
+			outline-offset: 2px;
+		}
+
+		&.selected {
+			border-color: var(--mat-sys-primary);
+			background: var(--mat-sys-primary-container);
+			box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.25);
+		}
+	}
+}

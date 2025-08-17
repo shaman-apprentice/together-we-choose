@@ -1,0 +1,23 @@
+app-story-carousel {
+	.swiper-div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		/* 320 * 3 + 4 * 16 + 2 * 56 */
+		max-width: 1136px;
+		margin: auto;
+	}
+
+	& swiper-container {
+		min-width: 0;
+		min-height: 0;
+	}
+
+	& swiper-slide {
+		width: fit-content;
+	}
+
+	--swiper-pagination-color: var(--mat-sys-primary);
+	--swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color); /** has opacity .2 by swiper design, which is fine */
+}

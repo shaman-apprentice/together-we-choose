@@ -1,0 +1,39 @@
+@let _stories = store.stories();
+<div class="swiper-div" [ngxIsLoading]="store.isLoading()">
+	@if(!isTouchDevice) {
+		<button mat-fab color="primary" (click)="slidePrev()" [disabled]="currentSlideIndex() === 0">
+			<mat-icon>chevron_left</mat-icon>
+		</button>
+	}
+	
+	<swiper-container
+		#swiper
+		init="false"
+		space-between="16"
+		slides-per-view="auto"
+		[attr.pagination]="isTouchDevice"
+		simulate-touch="false"
+	>
+		@for (s of _stories; track s.id; let i = $index) {
+			<swiper-slide>
+				<app-story-card [story]="s" />
+			</swiper-slide>
+			@if (i === 1) {
+				<swiper-slide>
+					<app-cta-slide [isTouchDevice]="isTouchDevice" />
+				</swiper-slide>
+			}
+		}
+		@if (_stories.length < 2) {
+			<swiper-slide>
+				<app-cta-slide [isTouchDevice]="isTouchDevice" />
+			</swiper-slide>
+		}
+	</swiper-container>
+	
+	@if (!isTouchDevice) {
+		<button mat-fab color="primary" (click)="slideNext()" [disabled]="maxSlide() === currentSlideIndex()">
+			<mat-icon>chevron_right</mat-icon>
+		</button>
+	}
+</div>

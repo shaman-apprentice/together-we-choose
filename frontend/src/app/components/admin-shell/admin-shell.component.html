@@ -1,0 +1,29 @@
+<mat-divider></mat-divider>
+
+<mat-toolbar color="primary" class="shell-toolbar">
+	<span>Admin</span>
+	<button mat-stroked-button type="button" (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<mat-divider></mat-divider>
+
+<mat-sidenav-container>
+	<mat-sidenav mode="side" opened>
+		<mat-nav-list>
+			@for (item of navItems; track item.path) {
+				<a
+					mat-list-item
+					[routerLink]="item.path"
+					routerLinkActive="active"
+					[routerLinkActiveOptions]="{ exact: true }"
+				>
+					{{ item.label }}
+				</a>
+			}
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>

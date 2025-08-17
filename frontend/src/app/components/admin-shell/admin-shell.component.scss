@@ -1,0 +1,35 @@
+.admin-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+app-admin-shell {
+	display: block;
+	height: 100%;
+
+	.shell-toolbar {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: var(--mat-sys-surface-container);
+	}
+
+	mat-sidenav.mat-drawer {
+		width: 17rem;
+		border-right: 1px solid rgba(0, 0, 0, 0.12);
+		padding: .5rem 1rem;
+		background-color: var(--mat-sys-surface-container);
+	}
+
+	mat-sidenav-container {
+		height: 100%;
+	}
+	
+	mat-sidenav-content {
+		padding:2rem;
+		background-color: var(--mat-sys-surface-container-high)
+	}
+}

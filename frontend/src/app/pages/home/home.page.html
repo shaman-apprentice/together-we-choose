@@ -1,0 +1,112 @@
+<section class="home-section">
+	<section class="intro">
+		<section class="intro-text">
+			<h1 class="hero-title" i18n="@@home.hero.title">Together, We Choose</h1>
+			<h2 class="hero-sub-title" i18n="@@home.hero.subtitle">Our Future Family Name</h2>
+			<p i18n="@@home.hero.paragraph1">This page helps you choose your future family name together. It offers guidance and useful information.</p>
+			<p i18n="@@home.hero.paragraph2">No matter what, always embrace your uniqueness. The family name means something different to each of us. There is no right or wrong choice. There is no simple decision tree. Be empathic toward your partner's and your family's feelings.</p>
+			<p i18n="@@home.hero.paragraph3">Read on and make your thoughtful, shared choice!</p>
+		</section>
+		<div class="intro-separator"></div>
+		<section class="quick-navigation">
+			<img src="logo.svg" alt="Together, We Choose logo" width="75%" i18n-alt="@@app.logo.alt" style="max-height: 248px; margin-bottom: 1rem; margin-top: 3rem;">
+			<h3 class="section-header" i18n="@@home.quick-nav.title">About this page</h3>
+			<p i18n="@@home.quick-nav.description">Scroll down or jump directly to a section:</p>
+			<nav style="display: flex; flex-direction: column; gap: .75rem">
+				<a matButton="elevated" href="#whyYourChoiceMatters" i18n="@@home.quick-nav.link.why"><mat-icon>link</mat-icon> Why Your Choice Matters</a>
+				<a matButton="elevated" href="#questionsToDiscussTogether" i18n="@@home.quick-nav.link.questions"><mat-icon>link</mat-icon> Questions To Discuss together</a>
+				<a matButton="elevated" href="#realCouplesRealStories" i18n="@@home.quick-nav.link.stories"><mat-icon>link</mat-icon> Real Couples, Real Stories</a>
+				<a matButton="elevated" href="#weAreHappyToHearFromYou" i18n="@@home.quick-nav.link.feedback"><mat-icon>link</mat-icon> We'd love to hear from you</a>
+			</nav>
+		</section>
+	</section>
+</section>
+
+<section id="whyYourChoiceMatters" class="home-section">
+	<h3 class="section-header" i18n="@@home.why.title">Why your choice matters</h3>
+	<p i18n="@@home.why.paragraph1">
+		Traditionally, the wife often adopted the husband's family name. But in our modern,
+		emancipated society we can do better than making a choice only based on tradition.
+	</p>
+	<p i18n="@@home.why.paragraph2">Here are a few reasons, why your choice matters:</p>
+
+	<div class="why-grid">
+		<app-info-card title="Emotional connection" icon="favorite" i18n-title="@@home.why.emotional.title" i18n="@@home.why.emotional.content">
+			Names can carry identity, history, emotional and more - for you, your siblings, parents and grandparents. Your feelings, your partner's feelings and your family's feelings deserve respect.
+		</app-info-card>
+
+		<app-info-card title="Legal restrictions" icon="gavel" i18n-title="@@home.why.legal.title" i18n="@@home.why.legal.content">
+			Your options will vary by country and region. Can you combine names or create a new one? What about legal implications for future children's surnames? Check local laws or ask your registrar.
+		</app-info-card>
+		
+		<app-info-card title="Equality in partnership" icon="balance" i18n-title="@@home.why.equality.title" i18n="@@home.why.equality.content">
+			Although it is tradition for the wife to adopt the husband's family name, nobody should take that for granted. Respect each other's feelings and find compromises.
+		</app-info-card>
+
+		<app-info-card title="Your individual reasons" icon="diamond" i18n-title="@@home.why.individual.title" i18n="@@home.why.individual.content">
+			Your reasons are individual and personal. There's no single right answer. <strong>So, start the conversation and discuss what matters to you.</strong>
+		</app-info-card>
+	</div>
+</section>
+
+<section id="questionsToDiscussTogether" class="home-section">
+		<h3 class="section-header" i18n="@@home.questions.title">Questions to discuss together</h3>
+
+		<p i18n="@@home.questions.paragraph">Here are some questions to consider and give you a good start:</p>
+
+		<div class="questions-list">
+			<app-list-item title="Personal attachment" icon="help" i18n-title="@@home.questions.personal.title" i18n="@@home.questions.personal.content">
+				How attached are you to your family name?
+				Is it your nickname?
+				Are there stories or traditions tied to it?
+				Do you connect values from your parents with it, you're proud of?
+				Does it feel connected to 'home'?”
+			</app-list-item>
+
+			<app-list-item title="Convenient matters" icon="help" i18n-title="@@home.questions.convenient.title" i18n="@@home.questions.convenient.content">
+				Has one family name a special nice sound to it? Which name is easier to spell?
+			</app-list-item>
+
+			<app-list-item title="Professional reasons" icon="help" i18n-title="@@home.questions.professional.title" i18n="@@home.questions.professional.content">
+				Are your names part of your professional identity or business?
+				Do you publish, perform, or have recognition under your current name?
+			</app-list-item>
+
+			<app-list-item title="Children" icon="help" i18n-title="@@home.questions.children.title" i18n="@@home.questions.children.content">
+				If you plan to have children, learn how local rules affect their surnames.
+				If you both keep your names, your children may be allowed only one.
+				In everyday situations (doctor’s office, school), different surnames can sometimes be awkward.
+			</app-list-item>
+
+			<app-list-item title="Family heritage" icon="help" i18n-title="@@home.questions.heritage.title" i18n="@@home.questions.heritage.content">
+				Is family heritage important to you? Is your family name meaningful to your parents or grandparents?
+			</app-list-item>
+
+			<app-list-item title="And many more…" icon="help" i18n-title="@@home.questions.more.title" i18n="@@home.questions.more.content">
+				Reflect on what matters to you. Be honest with each other. Embrace your uniqueness. Take your time.
+			</app-list-item>
+		</div>
+</section>
+
+<section id="realCouplesRealStories" class="home-section">
+	<h3 class="section-header" i18n="@@home.stories.title">Real couples, real stories</h3>
+	<p i18n="@@home.stories.description">Explore stories and reflections from other couples.</p>
+	<app-story-carousel class="carousel-section" />
+</section>
+
+<section id="weAreHappyToHearFromYou" class="home-section">
+	<h3 class="section-header" i18n="@@home.feedback.title">We'd love to hear from you</h3>
+	<p i18n="@@home.feedback.description">
+		Tell us what's missing, what helped, or what's still unclear so we can keep improving.
+	</p>
+	<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+		<a style="flex-grow: 1;" matButton="elevated" routerLink="/feedback">
+			<mat-icon>feedback</mat-icon>
+			<span i18n="@@home.feedback.cta.feedback">Send Feedback</span>
+		</a>
+		<a style="flex-grow: 1;" matButton="elevated" routerLink="/share">
+			<mat-icon>favorite</mat-icon>
+			<span i18n="@@home.feedback.cta.share">Share Your Story</span>
+		</a>
+	</div>
+</section>

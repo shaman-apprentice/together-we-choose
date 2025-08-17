@@ -1,0 +1,15 @@
+<mat-card class="story-card" appearance="outlined">
+	<mat-card-header>
+		<mat-card-title>{{ displayName() }}</mat-card-title>
+		<mat-card-subtitle class="subtitle">{{ relationshipLabel() }}</mat-card-subtitle>
+	</mat-card-header>
+	
+	<app-story-card-image [image]="story().image" />
+
+	<mat-card-content class="content">
+		<p class="quote">{{ story().story }}</p>
+		<div class="read-more-wrap">
+			<button mat-button (click)="openStoryDialog()" i18n="@@story-card.read-more">Read More</button>
+		</div>
+	</mat-card-content>
+</mat-card>

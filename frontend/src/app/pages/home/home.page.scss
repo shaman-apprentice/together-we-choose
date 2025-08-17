@@ -1,0 +1,128 @@
+app-home {
+	font-size: 18px;
+	
+	.home-section {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 2rem;
+
+		/* Center any direct child blocks and constrain line length */
+		> * {
+			max-width: min(960px, 100%);
+			margin-inline: auto;
+		}
+
+		.carousel-section {
+			display: block;
+			max-width: 1280px;
+		}
+
+		&:nth-child(2n) {
+			background-color: var(--mat-sys-surface-container);
+		}
+
+		&:nth-child(2n+1) {
+			background-color: var(--mat-sys-surface-container-high);
+		}
+	}
+
+	.quick-navigation {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 264px;
+
+
+		/* Left-align content within Angular Material buttons */
+		nav a.mat-mdc-button,
+		nav a.mdc-button,
+		nav a.mat-mdc-button .mdc-button__label {
+			width: 100%;
+			justify-content: flex-start;
+			text-align: left;
+		}
+	}
+
+	.intro {
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+
+		.intro-separator {
+			height: 2px;
+			background-color: var(--mat-divider-color, var(--mat-sys-outline-variant));
+		}
+	}
+	
+	@media (min-width: 800px) {
+		.home-section {
+			padding: 3rem;
+		}
+
+		.intro {
+			gap: 4rem;
+			flex-direction: row;
+			
+			.intro-separator {
+				align-self: stretch;
+				height: unset;
+				width: 12px;
+			}
+		}
+	}
+
+	/* Why Your Choice Matters grid */
+	.why-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+		margin-top: 1rem;
+			align-items: stretch; /* ensure track items stretch */
+
+			/* Each grid child (e.g., app-info-card) fills the row height */
+			> * { height: 100%; }
+
+		@media (min-width: 900px) {
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem 1.5rem;
+		}
+	}
+
+	/* Why section typography and spacing */
+	#whyYourChoiceMatters {
+		.section-header {
+			text-align: center;
+		}
+
+		> p {
+			max-width: 90ch;
+			line-height: 1.7;
+			color: var(--mat-sys-on-surface);
+		}
+
+		#questionsToDiscussTogether {
+			.section-header {
+				font-size: clamp(1.75rem, 1.2vw + 1.2rem, 2.25rem);
+				font-weight: 800;
+				text-align: center;
+				margin: 0 0 1rem 0;
+			}
+
+			> p {
+				max-width: 80ch;
+				margin: 0 auto 0.75rem auto;
+				line-height: 1.7;
+				color: var(--mat-sys-on-surface);
+			}
+
+			.questions-list {
+				max-width: 980px;
+				margin: 1rem auto 0 auto;
+				background: var(--mat-sys-surface);
+				border: 1px solid var(--mat-sys-outline-variant);
+				border-radius: 12px;
+				padding: .25rem 1rem;
+			}
+		}
+	}
+}

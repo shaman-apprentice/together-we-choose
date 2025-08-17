@@ -1,0 +1,14 @@
+{
+  "name": "together-we-choose",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Monorepo for Together, We Choose (frontend, backend, shared)",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present"
+  }
+}

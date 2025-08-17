@@ -1,0 +1,67 @@
+.story-card, app-story-card-image {
+	.image-wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 16px 16px 0;
+	}
+
+	.image-button {
+		width: 200px;
+		height: 200px;
+		border: none;
+		padding: 0;
+		background: transparent;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: box-shadow 160ms ease;
+	}
+
+	.image-button:focus-visible {
+		outline: 3px solid var(--mat-sys-secondary);
+		outline-offset: 4px;
+	}
+
+	.image-button:hover .story-card__image {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+	}
+
+	img {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		object-fit: cover;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	}
+
+	.image-placeholder {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		background: var(--mat-sys-secondary-container);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--mat-sys-on-secondary-container);
+
+		font-size: 64px;
+	}
+
+	.image-placeholder mat-icon {
+		font-size: 64px;
+		width: 64px;
+		height: 64px;
+	}
+}
+
+.story-card-image-full.cdk-overlay-pane.mat-mdc-dialog-panel {
+	max-height: 95vh;
+	max-width: 95vw;
+
+	.mat-mdc-dialog-content {
+		max-height: unset;
+	}
+}

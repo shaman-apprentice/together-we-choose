@@ -1,0 +1,59 @@
+<div class="admin-title">Submitted feedback</div>
+
+<div class="actions-bar">
+	<button
+		mat-raised-button
+		type="button"
+		color="warn"
+		(click)="deleteSelectedFeedback()"
+		[disabled]="isLoading() || !hasSelection()"
+	>
+		<mat-icon aria-hidden="true">delete_forever</mat-icon>
+		<span>Delete selected</span>
+	</button>
+
+	<span class="selection-status">
+		@if (hasSelection()) {
+			{{ selectedCount() }} selected
+		} @else if (feedbackCount() === 0) {
+			No feedback available
+		} @else {
+			{{ feedbackCount() }} total
+		}
+	</span>
+</div>
+
+<div class="container" [ngxIsLoading]="isLoading()">
+	@if (feedbackCount() === 0 && !isLoading()) {
+		<p class="empty-state">No feedback submissions yet.</p>
+	} @else {
+		@for (entry of feedback(); track entry.id) {
+			<article
+				class="feedback-card"
+				[class.selected]="isFeedbackSelected(entry.id)"
+				role="checkbox"
+				tabindex="0"
+				[attr.aria-checked]="isFeedbackSelected(entry.id)"
+				(click)="changeSelection(entry.id)"
+				(keydown)="onFeedbackContainerKeydown($event, entry.id)"
+			>
+				<header class="feedback-card__meta">
+					<span class="feedback-card__date">{{ entry.createdAt | date: "medium" }}</span>
+					@if (entry.email) {
+						<a
+							href="mailto:{{ entry.email }}"
+							class="feedback-card__email"
+							(click)="$event.stopPropagation()"
+							(keydown)="$event.stopPropagation()"
+						>
+							{{ entry.email }}
+						</a>
+					} @else {
+						<span class="feedback-card__email feedback-card__email--placeholder">No email provided</span>
+					}
+				</header>
+				<p class="feedback-card__content">{{ entry.feedback }}</p>
+			</article>
+		}
+	}
+</div>

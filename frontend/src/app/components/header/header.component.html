@@ -1,0 +1,69 @@
+<nav class="header">
+  <a class="brand" routerLink="/">
+		<img src="logo.svg" alt="Together, We Choose logo" width="80" height="48" i18n-alt="@@app.logo.alt">
+		<span i18n="@@app.name">Together, We Choose</span>
+  </a>
+
+	<div class="desktop-nav">
+		@for (item of navItems; track item.label) {
+			<a matButton 
+				[routerLink]="item.path"
+				routerLinkActive="active-route"
+				[routerLinkActiveOptions]="{ exact: item.path === '/' }"
+			>
+				{{ item.label }}
+			</a>
+		}
+
+		<div style="display: flex; gap: 1rem; align-items: center;">
+			<ng-container *ngTemplateOutlet="pageSettings" />
+	
+			<a href="https://buymeacoffee.com/shaman.apprentice" target="_blank" class="bmc-btn" style="display: flex; align-items: center;">
+				<img src="bmc-button.svg" alt="Buy me a coffee" width="142" height="40">
+			</a>
+		</div>
+		
+	</div>
+
+	<div class="mobile-nav">
+		<ng-container *ngTemplateOutlet="pageSettings" />
+		<button mat-icon-button [matMenuTriggerFor]="menu">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<mat-menu #menu="matMenu" class="mobile-menu">
+			@for (item of navItems; track item.label) {
+				<a mat-menu-item 
+					[routerLink]="item.path"
+					routerLinkActive="active-route"
+					[routerLinkActiveOptions]="{ exact: item.path === '/' }"
+				>
+					{{ item.label }}
+				</a>
+			}
+			
+			<mat-divider />
+			<a mat-menu-item href="https://www.buymeacoffee.com" target="_blank" rel="noopener noreferrer">
+				<img src="bmc-button.svg" alt="Buy me a coffee" width="142" height="40">
+			</a>
+		</mat-menu>
+	</div>
+</nav>
+
+<ng-template #pageSettings>
+	<div style="display: flex; gap: 1rem; align-items: center;">
+		<button matMiniFab [matMenuTriggerFor]="langMenu" style="font-size: 1.5rem;">
+			{{ currentLangFlag }}
+		</button>
+		<mat-menu #langMenu>
+			@for (langItem of langItems; track langItem.flag) {
+				<button mat-menu-item (click)="languageService.switchLocale(langItem.locale)">
+					{{ langItem.flag }} {{ langItem.label }} 
+				</button>
+			}
+		</mat-menu>
+
+		<button matMiniFab (click)="themeService.toggleTheme()">
+			<mat-icon>{{ themeService.isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+		</button>
+	</div>
+</ng-template>

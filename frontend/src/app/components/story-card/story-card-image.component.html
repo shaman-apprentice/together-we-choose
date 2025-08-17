@@ -1,0 +1,23 @@
+<div class="image-wrap">
+	@let img = image();
+	@if (img && !imageLoadFailed()) {
+		<button
+			type="button"
+			class="image-button"
+			(click)="openImageFullSize($event)"
+		>
+			<img
+				[src]="img.thumbnailUrl"
+				alt="User photo thumbnail"
+				i18n-alt="@@story-card.user-photo-thumbnail"
+				width="200"
+				height="200"
+				(error)="handleImageError()"
+			/>
+		</button>
+	} @else {
+		<div class="image-placeholder">
+			<mat-icon>image</mat-icon>
+		</div>
+	}
+</div>

@@ -1,0 +1,24 @@
+<mat-card class="story-card" appearance="outlined">
+	<mat-card-header>
+		<mat-card-title i18n="@@story-carousel.you">You?</mat-card-title>
+		<mat-card-subtitle class="subtitle">?</mat-card-subtitle>
+	</mat-card-header>
+
+	<div class="image-wrap">
+		<div class="image-placeholder">
+			<mat-icon>help</mat-icon>
+		</div>
+	</div>
+	
+	<mat-card-content style="flex-grow: 1; display: flex; flex-direction: column;">
+		<p style="flex-grow: 1;" i18n="@@story-carousel.intro1">We are happy to hear your story and thoughts.</p>
+		<a
+			mat-flat-button color="primary"
+			style="width: 100%;"
+			[style.margin-bottom]="isTouchDevice() ? '1rem' : null"
+			routerLink="/share">
+			<mat-icon>favorite</mat-icon>
+			<span i18n="@@story-carousel.intro2">Share Your Story</span>
+		</a>
+	</mat-card-content>
+</mat-card>

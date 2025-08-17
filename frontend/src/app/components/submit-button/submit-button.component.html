@@ -1,0 +1,7 @@
+<button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting()">
+	@if (isSubmitting()) {
+		<mat-progress-spinner diameter="18" strokeWidth="3" mode="indeterminate" />
+	} @else {
+		<span>{{ label() }}</span>
+	}
+</button>

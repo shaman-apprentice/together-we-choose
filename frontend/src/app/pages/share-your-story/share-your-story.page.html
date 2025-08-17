@@ -1,0 +1,192 @@
+<section class="page-container">
+	<h1 i18n="@@share.title" class="page-title">Share your story</h1>
+	<p i18n="@@share.intro1">
+		Help other couples learn from your journey. You can stay anonymous if you want to.
+		After you submit, we'll do a brief review and publish your story on the home page.
+	</p>
+	<p i18n="@@share.intro2">
+		We never publish your email. If you include it, we may contact you with questions.
+	</p>
+
+	<form [formGroup]="form" (ngSubmit)="submit()" novalidate enctype="multipart/form-data">
+		<div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+			<mat-form-field style="flex-grow: 1;">
+				<mat-label i18n="@@share.name.label">Name (optional)</mat-label>
+				<input matInput formControlName="name" i18n-placeholder="@@share.name.placeholder" placeholder="Your name" />
+				@if (form.controls.name.hasError("errorMessage") && form.controls.name.touched) {
+					<mat-error>{{ form.controls.name.errors?.["errorMessage"] }}</mat-error>
+				}
+			</mat-form-field>
+
+			<mat-form-field style="flex-grow: 1;">
+				<mat-label i18n="@@share.relationship.label">Relationship status</mat-label>
+				<mat-select formControlName="relationshipStatus">
+					@for (option of relationshipStatusOptions; track option.value) {
+						<mat-option [value]="option.value">{{ option.label }}</mat-option>
+					}
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field style="flex-grow: 1;">
+				<mat-label i18n="@@share.email.label">Email (optional)</mat-label>
+				<input matInput type="email" formControlName="email" i18n-placeholder="@@share.email.placeholder" placeholder="your@email.com" autocomplete="email" />
+				@if (form.controls.email.hasError("errorMessage") && form.controls.email.touched) {
+					<mat-error>{{ form.controls.email.errors?.["errorMessage"] }}</mat-error>
+				}
+			</mat-form-field>
+		</div>
+
+		<div class="file-upload">
+			<div class="file-upload-handler">
+				<span style="font-weight: 600;" i18n="@@share.image.label">Story image (optional)</span>
+				<p i18n="@@share.image.hint">
+					AV1, JPG, PNG, OR WebP.
+					We automatically create a 200×200 px thumbnail and a larger preview.
+					Click the thumbnail on the right to open the larger version.
+				</p>
+				<p i18n="@@share.image.hint2">Or choose a fallback image below.</p>
+				<input
+					#fileInput
+					class="share-story__file-input"
+					type="file"
+					[attr.accept]="acceptedImageMimeTypes.join(',')"
+					(change)="onImageSelected($event)"
+				/>
+
+				<section class="share-story__preview">
+					<div class="share-story__fallback-options" role="listbox">
+						@for (fallbackImage of fallbackImages; track fallbackImage) {
+							<button
+								type="button"
+								role="option"
+								class="share-story__fallback-option"
+								[class.share-story__fallback-option--active]="form.controls.placeholderImage.value === fallbackImage"
+								(click)="form.controls.placeholderImage.setValue(fallbackImage)"
+								[attr.aria-selected]="form.controls.placeholderImage.value === fallbackImage"
+							>
+								<img
+									[src]="fallbackImage"
+									alt="Your chosen fallback image"
+									i18n-alt="@@share.image.fallback.alt.text"
+									class="share-story__fallback-option-image"
+								/>
+							</button>
+						}
+					</div>
+				</section>
+			</div>
+
+			<div class="file-upload-preview">
+				<section class="share-story__preview">
+					<figure class="share-story__preview-figure">
+						@if (imageService.isProcessing()) {
+							<div style="height: 200px; width: 200px; display: flex; justify-content: center; align-items: center;">
+								<mat-progress-spinner
+									mode="indeterminate"
+									diameter="64"
+									strokeWidth="4"
+									aria-hidden="true"
+								/>
+							</div>
+						} @else if (imageService.processedImage(); as img) {
+							<button
+								type="button"
+								class="share-story__preview-image-button"
+								(click)="openFullImage()"
+							>
+								<img
+									[src]="img.thumbnail.asUrl"
+									[width]="img.thumbnail.widthInPx"
+									[height]="img.thumbnail.heightInPx"
+									class="share-story__preview-image"
+									alt="thumbnail of uploaded image"
+									i18n-alt="@@share.image.uploaded-thumbnail"
+								/>
+							</button>
+						} @else {
+							<img
+								[src]="form.controls.placeholderImage.value"
+								style="width: 200px; height: 200px"
+								class="share-story__preview-image"
+								alt="Your chosen default image"
+								i18n-alt="@@share.image.chosen-default"
+							/>
+						}
+						</figure>
+					</section>
+
+				<div style="margin-top: 3px; display: flex; gap: 1rem; justify-content: space-between;">
+					<button
+						style="flex-grow: 1;"
+						type="button"
+						mat-stroked-button
+						color="primary"
+						(click)="fileInput.click()"
+						i18n="@@share.image.select"
+					>
+						Choose image
+					</button>
+					<button
+						style="flex-grow: 1;"
+						type="button"
+						mat-stroked-button color="primary"
+						(click)="clearImage()"
+						i18n="@@share.image.remove"
+					>
+						Remove image
+					</button>
+				</div>
+			</div>
+
+			@if (form.controls.image.hasError('errorMessage')) {
+				<p class="app-form-error-msg" style="margin-top: -1rem">{{ form.controls.image.errors?.["errorMessage"] }}</p>
+			}
+		</div>
+
+		<mat-form-field style="width: 100%; margin-top: 1.75rem; margin-bottom: 1.5rem;">
+			<mat-label i18n="@@share.story.label">Your story</mat-label>
+			<textarea
+				style="min-height: 12rem;"
+				matInput
+				rows="8"
+				formControlName="story"
+				i18n-placeholder="@@share.story.label"
+				placeholder="Describe your experience, feelings, and the decision you made."
+			></textarea>
+			@if (form.controls.story.hasError("errorMessage") && form.controls.story.touched) {
+				<mat-error>{{ form.controls.story.errors?.["errorMessage"] }}</mat-error>
+			}
+		</mat-form-field>
+		<p class="app-form-hint">{{ form.controls.story.value.length }}/{{ maxStoryLength }}</p>
+
+		@if (submissionState() === 'success') {
+			<p class="app-submission-status-success" i18n="@@share.submit.success">Thank you! We received your story and will review it shortly.</p>
+		} @else if (submissionState() === 'error') {
+			<p class="app-submission-status-error">{{ submissionErrorMessage() }}</p>
+		}
+
+		<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem">
+			<div>
+				<mat-slide-toggle
+					formControlName="privacyPolicyConfirmed"
+					color="primary"
+					required
+					i18n="@@share.privacy.consent"
+				>
+					I accept the
+					<a routerLink="/privacy-policy" target="_blank">privacy policy</a>.
+				</mat-slide-toggle>
+				@if (form.controls.privacyPolicyConfirmed.invalid && form.controls.privacyPolicyConfirmed.touched) {
+					<div class="app-form-error-msg" i18n="@@share.privacyPolicyConfirmed.error" style="max-width: 320px;">
+						Please confirm that you accept the privacy policy before sending your story.
+					</div>
+				}
+			</div>
+			<app-submit-button
+				label="Submit story"
+				i18n-label="@@share.submit-button.label"
+				[isSubmitting]="submissionState() === 'submitting'"
+			/>
+		</div>
+	</form>
+</section>

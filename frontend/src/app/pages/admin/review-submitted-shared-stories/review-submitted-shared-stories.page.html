@@ -1,0 +1,43 @@
+<div class="admin-title">Submitted shared stories</div>
+
+<div style="margin-top: 1rem; display: flex; gap: .5rem; align-items: center;">
+	<button
+		mat-raised-button
+		type="button"
+		color="primary"
+		(click)="acceptSelectedStories()"
+		[disabled]="isLoading() || !hasSelection()"
+	>
+		<mat-icon aria-hidden="true">check_circle</mat-icon>
+		<span>Accept selected</span>
+	</button>
+	<button
+		mat-raised-button
+		type="button"
+		color="warn"
+		(click)="deleteSelectedStories()"
+		[disabled]="isLoading() || !hasSelection()"
+	>
+		<mat-icon aria-hidden="true">delete_forever</mat-icon>
+		<span>Delete selected</span>
+	</button>
+	
+	<span style="font-weight: 600; font-size: 1.125rem;">
+		{{ hasSelection() ? `${selectedCount()} selected` : 'No stories selected' }}
+	</span>
+</div>
+
+<div class="container" [ngxIsLoading]="isLoading()">
+	@for (story of stories(); track story.id) {
+		<div
+			class="story-card-selection"
+			[class.selected]="isStorySelected(story.id)"
+			role="checkbox"
+			tabindex="0"
+			(click)="changeSelection(story.id)"
+			(keydown)="onStoryContainerKeydown($event, story.id)"
+		>
+			<app-story-card [story]="story" />
+		</div>
+	}
+</div>

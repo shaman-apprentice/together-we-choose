@@ -1,0 +1,23 @@
+.app-form-hint {
+	display: flex;
+	justify-content: flex-end;
+	margin: -2.5rem 0 1rem 0;
+	font-size: 0.75rem;
+	color: var(--mat-sys-on-surface-variant);
+}
+
+.app-form-error-msg {
+	color: var(--mat-form-field-error-text-color, var(--mat-sys-error));
+}
+
+.app-submission-status-success {
+	padding: 1rem;
+	background: var(--app-success-container);
+	color: var(--app-on-success-container);
+}
+
+.app-submission-status-error {
+	padding: 1rem;
+	background: var(--mat-sys-error-container);
+	color: var(--mat-sys-on-error-container);
+}

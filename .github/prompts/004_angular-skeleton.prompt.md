@@ -1,0 +1,1 @@
+Implement the basic Angular skeleton. Add a navigation header. In the upper left I want my [logo](public/logo.svg) with the app name "Together, We Choose". In the right, I want a navigation item for "Home", "Feedback", "Share Your Story", "Impressum" and a "Buy me a coffee" button. Don't touch anything else.

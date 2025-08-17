@@ -1,0 +1,33 @@
+.hero-title {
+	font-size: 4rem;
+	font-weight: 900;
+	line-height: 120%;
+	margin-bottom: -2rem;
+}
+
+.hero-sub-title {
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 110%;
+}
+
+.section-header {
+	font-size: 2rem;
+	font-weight: 800;
+	margin: 0 auto 1rem auto;
+	line-height: 120%;
+}
+
+.page-container {
+	max-width: min(800px, 100%);
+	margin-inline: auto;
+	padding: clamp(1.5rem, 2vw + 1rem, 3rem) 1rem 3rem;
+}
+
+.page-title {
+	font-size: 3rem;
+	font-weight: 800;
+	line-height: 120%;
+	margin: 1rem auto;
+}
+

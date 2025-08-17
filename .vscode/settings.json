@@ -1,0 +1,12 @@
+{
+	"search.exclude": {
+		"**/node_modules": true,
+		".env*": true
+	},
+  "files.associations": {
+    ".env*": "dotenv"
+  },
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+	"editor.insertSpaces": false
+}

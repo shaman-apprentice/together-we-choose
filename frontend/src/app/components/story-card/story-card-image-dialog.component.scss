@@ -1,0 +1,10 @@
+.cdk-overlay-pane.mat-mdc-dialog-panel:has(app-story-card-image-dialog) {
+	max-width: 90vw;
+	// 768px max image height, 72px action buttons + paddings
+	max-height: min(90vh, 768px + 72px + 32px);
+
+	& .mat-mdc-dialog-content {
+		max-height: unset;
+		padding-bottom: 0;
+	}
+}

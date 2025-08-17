@@ -1,0 +1,56 @@
+<section class="page-container">
+	<h1 i18n="@@feedback.title" class="page-title">Send feedback</h1>
+
+	<p i18n="@@feedback.intro">
+		Thank you for taking a moment to share your thoughts.
+		We welcome all kinds of feedback. If you'd like a reply,
+		you can include your email.
+	</p>
+	<ul>
+		<li i18n="@@feedback.list.idea">Have ideas to improve the site?</li>
+		<li i18n="@@feedback.list.confusing">Noticed anything confusing or frustrating?</li>
+		<li i18n="@@feedback.list.likes">Want to share what you liked or didn't like?</li>
+		<li i18n="@@feedback.list.other">Anything else on your mind?</li>
+	</ul>
+	<p i18n="@@feedback.closing">We look forward to hearing from you!</p>
+
+	<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+		<mat-form-field style="width: 100%; margin-top: 1rem;">
+			<mat-label i18n="@@feedback.email.label">Email (optional)</mat-label>
+			<input matInput type="email" formControlName="email" i18n-placeholder="@@feedback.email.placeholder" placeholder="your@email.com" autocomplete="email" />
+			@if (form.controls.email.hasError("errorMessage") && form.controls.email.touched) {
+				<mat-error>{{ form.controls.email.errors?.["errorMessage"] }}</mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field style="width: 100%; margin-top: 1rem; margin-bottom: 1.5rem;">
+			<mat-label i18n="@@feedback.story.label">Your feedback</mat-label>
+			<textarea
+				style="min-height: 12rem;"
+				matInput
+				rows="8"
+				formControlName="feedback"
+				i18n-placeholder="@@feedback.story.placeholder"
+				placeholder="Tell us what's on your mind."
+			></textarea>
+			@if (form.controls.feedback.hasError("errorMessage") && form.controls.feedback.touched) {
+				<mat-error>{{ form.controls.feedback.errors?.["errorMessage"] }}</mat-error>
+			}
+		</mat-form-field>
+		<p class="app-form-hint">{{ form.controls.feedback.value.length }}/{{ maxStoryLength }}</p>
+
+		@if (submissionState() === 'success') {
+			<p class="app-submission-status-success" i18n="@@feedback.submit.success">Thank you! We received your feedback and will review it shortly.</p>
+		} @else if (submissionState() === 'error') {
+			<p class="app-submission-status-error">{{ submissionErrorMessage() }}</p>
+		}
+
+		<div style="display: flex; justify-content: end;">
+			<app-submit-button
+				label="Send feedback"
+				i18n-label="@@feedback.submit-button.label"
+				[isSubmitting]="submissionState() === 'submitting'"
+			/>
+		</div>
+	</form>
+</section>

@@ -1,0 +1,23 @@
+app-story-card-dialog {
+	.story-card-dialog-panel .mat-mdc-dialog-surface {
+		border-radius: 16px;
+	}
+	
+	.dialog-content {
+		padding: 0;
+	}
+	
+	.story-card-dialog-card {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.dialog-body {
+		padding: 16px;
+	}
+	
+	.full-story {
+		margin: 0;
+		white-space: pre-line;
+	}
+}

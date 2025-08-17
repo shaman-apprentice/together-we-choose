@@ -1,0 +1,17 @@
+<mat-dialog-content class="story-dialog-content">
+	<mat-card class="story-card-dialog-card" appearance="outlined">
+		<mat-card-header>
+			<mat-card-title>{{ data.displayName }}</mat-card-title>
+			<mat-card-subtitle class="subtitle">{{ data.relationshipLabel }}</mat-card-subtitle>
+		</mat-card-header>
+		
+		<app-story-card-image [image]="this.data.story.image" />
+
+		<mat-card-content class="dialog-body">
+			<p class="full-story">{{ this.data.story.story }}</p>
+		</mat-card-content>
+	</mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button type="button" mat-button mat-dialog-close i18n="@@story-card-dialog.close-button">Close</button>
+</mat-dialog-actions>
