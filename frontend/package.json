@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-	"private": true,
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,9 @@
     "start:de": "ng serve --configuration development-de",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "i18n:extract": "ng extract-i18n --format json --output-path locale --out-file en.json"
+		"i18n": "npm run i18n:extract && npm run i18n:sync",
+    "i18n:extract": "ng extract-i18n --format json --output-path locale --out-file en.json",
+    "i18n:sync": "sync-i18n --files 'locale/*.json' --primary en --languages de --space 2"
   },
   "dependencies": {
     "@angular/animations": "^20.3.12",
@@ -32,6 +34,7 @@
     "@angular/cli": "^20.3.1",
     "@angular/compiler-cli": "^20.3.0",
     "@angular/localize": "^20.3.1",
+    "i18next-json-sync": "3.1.2",
     "typescript": "~5.9.2"
   }
 }
