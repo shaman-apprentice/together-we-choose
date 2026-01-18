@@ -21,10 +21,10 @@ export function getEnv(): EnvConfig {
 let envConfig: EnvConfig | null = null;
 
 function readEnv(): EnvConfig {
-	for (const relativePath of ['.env', '.env.local']) {
+	for (const relativePath of ['.env.local', '.env']) {
 		const absolutePath = path.resolve(process.cwd(), relativePath);
 		if (existsSync(absolutePath))
-			loadEnv({ path: absolutePath, override: true, quiet: true });
+			loadEnv({ path: absolutePath, override: false, quiet: true });
 	}
 
 	const envConfig = {

@@ -6,7 +6,8 @@
   "workspaces": [
     "frontend",
     "backend",
-    "shared"
+    "shared",
+		"e2e-tests"
   ],
   "scripts": {
     "test": "npm run test --workspaces --if-present"
